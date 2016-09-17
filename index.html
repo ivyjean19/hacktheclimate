@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <meta charset="utf-8">
+    <title>Hack the Climate</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/business-casual.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="brand">Hack the Climate</div>
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+              <div id="map"></div>
+                       
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Build a website
+                        <strong>worth visiting</strong>
+                    </h2>
+                    <hr>
+                    <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt="">
+                    <hr class="visible-xs">
+                    <p>The boxes used in this template are nested inbetween a normal Bootstrap row and the start of your column layout. The boxes will be full-width boxes, so if you want to make them smaller then you will need to customize.</p>
+                    <p>A huge thanks to <a href="http://join.deathtothestockphoto.com/" target="_blank">Death to the Stock Photo</a> for allowing us to use the beautiful photos that make this template really come to life. When using this template, make sure your photos are decent. Also make sure that the file size on your photos is kept to a minumum to keep load times to a minimum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Beautiful boxes
+                        <strong>to showcase your content</strong>
+                    </h2>
+                    <hr>
+                    <p>Use as many boxes as you like, and put anything you want in them! They are great for just about anything, the sky's the limit!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function JSON2CSV(objArray) {
+        var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+
+        var str = '';
+        var line = '';
+
+        if ($("#labels").is(':checked')) {
+          var head = array[0];
+          if ($("#quote").is(':checked')) {
+            for (var index in array[0]) {
+              var value = index + "";
+              line += '"' + value.replace(/"/g, '""') + '",';
+            }
+          } else {
+            for (var index in array[0]) {
+              line += index + ',';
+            }
+          }
+
+          line = line.slice(0, -1);
+          str += line + '\r\n';
+        }
+
+        for (var i = 0; i < array.length; i++) {
+          var line = '';
+
+          if ($("#quote").is(':checked')) {
+            for (var index in array[i]) {
+              var value = array[i][index] + "";
+              line += '"' + value.replace(/"/g, '""') + '",';
+            }
+          } else {
+            for (var index in array[i]) {
+              line += array[i][index] + ',';
+            }
+          }
+
+          line = line.slice(0, -1);
+          str += line + '\r\n';
+        }
+        return str;
+      }
+
+        $.ajax({
+  url: "http://weather.asti.dost.gov.ph/home/index.php/api/data/190/from/2016-01-01/to/2016-04-04",
+  // beforeSend: function( xhr ) {
+  //   xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+  // }
+})
+  .done(function( data ) {
+    if ( console && console.log ) {
+      console.log( data );
+    }
+
+    // $.getJSON(data, function(data, status) {
+    //       console.log(data);
+    //     });
+
+  });
+    </script>
+    
+</body>
+
+</html>
